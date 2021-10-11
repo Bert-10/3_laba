@@ -51,6 +51,55 @@ namespace _3_laba
             return s;
         }
 
+        public static string Union(int[] a, int[] b)
+        {
+            string s = "";
+            int k = 0;
+            bool check = false,check_b=false;
+            int[] c = new int[a.Length + b.Length];
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                for (int j = 0; j < b.Length; j++)
+                {
+                    if (a[i] == b[j])
+                    {
+                        c[k] = a[i];
+                        k++;
+                    }
+                    if (b[j] == 0)
+                    {
+                        check_b = true;
+                    }
+                }
+                if (a[i] == 0)
+                {
+                    check = true;
+                }
+            }
+
+            Array.Sort(c);
+            int[] ch = c.Distinct().ToArray();
+
+            if ((check == true) & (check_b ==true))
+            { 
+                for (int i = 0; i < ch.Length; i++)
+                {
+                s = s + ch[i] + " ";
+                }
+            }
+            else
+            {
+                for (int i = 1; i < ch.Length; i++)
+                {
+                    s = s + ch[i] + " ";
+                }
+            }
+
+            return s;
+        }
+
+
 
     }
 }

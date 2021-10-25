@@ -49,6 +49,14 @@ namespace _3_laba
             string s1,s2;
             s1 = textBox1.Text;
             s2 = textBox2.Text;
+            if(s1[s1.Length-1]==' ')
+            {
+                s1 = s1.Substring(0, s1.Length - 1);
+            }
+            if (s2[s2.Length - 1] == ' ')
+            {
+                s2 = s2.Substring(0, s2.Length - 1);
+            }
             string[] subs = s1.Split(' ');
             string[] subs_1 = s2.Split(' ');
             int[] a = new int[subs.Length];
@@ -66,7 +74,8 @@ namespace _3_laba
                     b[i]=int.Parse(subs_1[i]);
                 }
             }
-            catch (FormatException)
+            //catch (FormatException)
+            catch (Exception exc)
             {
                 // сообщение об ошибке
                 MessageBox.Show("Некорректный ввод. В поля можно вводить только числа и пробелы между ними (в конце и в начале пробелы запрещены).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -78,15 +87,15 @@ namespace _3_laba
 
             switch (comboBox1.Text)
             {
-                case "сумма множеств/сумма множества и числа":
+                case "сумма":
                     textBox3.Text = Many.OpPlus(a, b);
                     break;
 
-                case "пересечение двух множеств":
+                case "пересечение":
                     textBox3.Text = Many.Union(a, b);
                     break;
 
-                case "разность двух множеств/разность множества и числа":
+                case "разность":
                     textBox3.Text = Many.difference(a, b);
                     break;
             }
